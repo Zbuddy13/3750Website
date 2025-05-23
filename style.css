@@ -1,0 +1,120 @@
+/* Global styles for the page */
+body, h1, h2, h3, p, div, section, header, footer, nav, main, img {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    /* Main page body style */
+body {
+    background-color: #f0f0f0;
+    color: #333333; /* College avenue grey text*/
+    line-height: 1.6;
+}
+
+/* Container for center content */
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+/* Header section */
+.header-section {
+    background-color: #F56600; /* Solid clemson orange */
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Header for header section */
+.header-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Header section text  */
+.header-section p {
+    font-size: 1.1rem;
+}
+
+/* Main content area */
+.main-content-area {
+    padding: 30px 0;
+}
+
+/* Content sections margin */
+.content-section {
+    margin-bottom: 50px;
+}
+
+/* Title format for the sections */
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333333; /* College avenue color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Card styling is for the sections on the page */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #C8C9C7; /* Reflection color */
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Card header */
+.card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #522D80; 
+    margin-bottom: 8px;
+}
+
+/* Card text */
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Images to be displayed on site */
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Nav bar styling */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left
+}
+
+li a {
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+li a:hover{
+  background-color: #522D80;
+}
