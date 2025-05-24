@@ -19,7 +19,7 @@ body {
 /* Container for center content */
 .container {
     width: 90%;
-    max-width: 960px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
@@ -72,9 +72,16 @@ body {
     border: 1px solid #C8C9C7; /* Reflection color */
     border-radius: 4px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* Card header */
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #F56600; 
+    margin-bottom: 8px;
+}
 .card h3 {
     font-size: 1.2rem;
     font-weight: 600;
@@ -90,11 +97,18 @@ body {
 
 /* Images to be displayed on site */
 .card-image {
-    width: 100%;
+    width: 75%;
     height: auto;
     border-radius: 3px;
     margin-bottom: 15px;
-    display: block;
+}
+
+/* Iframe style*/
+.card-iframe {
+    width: 90%;
+    height: 100vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Nav bar styling */
@@ -128,21 +142,40 @@ li a:hover {
 
 /* Footer styling */
 .my-footer {
-    background-color: #333333; /* Dark grey background */
-    color: #f0f0f0;       /* Light grey/white text color for contrast */
+    background-color: #333333; 
+    color: #f0f0f0;       
     text-align: center;
-    padding: 30px 20px;    /* Adjusted padding */
+    padding: 30px 20px;
     width: 100%;
     border-top: 2px solid #F56600; /* Clemson Orange top border */
 }
+
 .my-footer p {
-    margin: 5px 0; /* Add some spacing between paragraphs in footer */
+    margin: 5px 0;
     font-size: 0.9em;
 }
+
 .my-footer a {
     color: #F56600; /* Clemson Orange for links */
     text-decoration: none;
 }
+
 .my-footer a:hover {
     text-decoration: underline;
+}
+
+/* Aside style */
+aside {
+    text-align: right;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+aside h4 {
+    margin-top: 0;
+    color: #333;
 }
