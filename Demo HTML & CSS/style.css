@@ -1,5 +1,5 @@
 /* Global styles for the page */
-body, h1, h2, h3, p, div, section, header, footer, nav, main, img {
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
