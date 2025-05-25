@@ -1,87 +1,110 @@
 body {
-  margin:0;
-  padding:0;
-  min-width: 525px;
+  margin: 0;
+  padding: 0;
+  min-width: 320px; /* Reduced min-width */
+  font-size: 16px; /* Base font size */
 }
 
 header {
-  float: left;
   width: 100%;
+  padding: 1rem 0; /* Switch to rem */
+  text-align: center;
 }
 
 footer {
-  position:relative;
-  float: left;
   width: 100%;
   background-color: #cccccc;
-  text-align:center;
+  text-align: center;
   font-style: italic;
+  padding: 1rem 0; /* Switch to rem */
 }
 
 #wrapper {
-  float: left;
-  padding-left: 200px;
-  padding-right: 125px;
+  width: 100%;
+  max-width: 1200px; /* Set limit for max width */
+  margin: 0 auto; /* Center the wrapper */
+  padding: 0 2%; /* Relative padding */
   overflow: hidden;
+  box-sizing: border-box; /* Include padding in width */
 }
 
 #left_side {
-  position: relative;
   float: left;
-  width: 200px;
-  background-color: #52f471;
-  right: 200px;
-  margin-left: -100%;
-  margin-bottom: -2000px;
-  padding-bottom: 2000px;
-
+  width: 20%; /* Relative width */
+  background-color: #F56600; /* Clemson orange */
+  padding: 1rem; /* Relative padding */
+  box-sizing: border-box;
+  min-height: 400px; /* Reduced height for mobile */
 }
 
 #right_side {
-  position: relative;
   float: left;
-  width: 125px;
-  background-color: #f452d5;
-  margin-right: -125px;
-  margin-bottom: -2000px;
-  padding-bottom: 2000px;
-
+  width: 25%; /* Relative width */
+  background-color: #522D80; /* Clemson Purple */
+  padding: 1rem; /* Switch to rem */
+  box-sizing: border-box;
+  min-height: 400px; /* Reduced height for mobile */
 }
 
 #content_area {
-  position: relative;
   float: left;
+  width: 55%; /* Adjust to fit between left and right */
   background-color: #ffffff;
-  width: 100%;
-  margin-bottom: -2000px;
-  padding-bottom: 2000px;
-
+  text-align: center;
+  padding: 1rem; /* Switched to rem */
+  box-sizing: border-box;
 }
 
 h1 {
   margin: 0;
+  font-size: 2rem; /* rem font size */
 }
 
 #left_side ul {
   list-style: none;
-  margin: 12px 0px 0px 12px;
-  padding: 0px;
+  margin: 1rem 0 0 0.5rem;
+  padding: 0;
 }
 
-#left_side li a:link, #nav li a:visited {
-  font-size: 12pt;
+#left_side li a:link, #left_side li a:visited {
+  font-size: 1rem; /* rem font size */
   font-weight: bold;
-  padding: 3px 0px 3px 3px;
+  padding: 0.3rem 0 0.3rem 0.3rem;
   color: #000000;
   text-decoration: none;
   display: block;
 }
 
-#left_side li a:hover, #nav li a:active {
-  font-size: 12pt; 
+#left_side li a:hover, #left_side li a:active {
+  font-size: 1rem;
   font-weight: bold;
-  padding: 3px 0px 3px 3px;
+  padding: 0.3rem 0 0.3rem 0.3rem;
   color: #ffffff;
   text-decoration: none;
   display: block;
+}
+
+/* Media query section for smaller devices */
+@media screen and (max-width: 768px) {
+  #wrapper {
+    padding: 0 1rem; /* Larger padding for mobile */
+  }
+
+  #left_side, #right_side, #content_area {
+    float: none; /* Stack elements vertically instead of horizontal */
+    width: 100%; /* Full width on mobile */
+    margin: 0; /* Set margins to 0 */
+    right: 0; /* Reset position */
+    min-height: auto; /* Allow natural height */
+    padding: 0.5rem; /* Reduce padding */
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Smaller headers on mobile */
+  }
+
+  #left_side ul {
+    margin: 0.5rem 0;
+  }
 }
