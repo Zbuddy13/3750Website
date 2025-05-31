@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prog04 Color Change</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <!-- Main container to hold everything -->
+    <main class="prog04-container">
+        <h1>Prog4 Color Changer</h1>
+
+        <!-- Defining the color buttons and reset buttons -->
+        <div class="button-container">
+            <button class="color-button red">RED</button>
+            <button class="color-button green">GREEN</button>
+            <button class="color-button blue">BLUE</button>
+            <!-- Extra credit: reset button for elements -->
+            <button class="reset-button">RESET</button>
+        </div>
+
+        <!-- Counters that house nuber of times buttons hovered or clicked -->
+        <div class="counters">
+            <!-- Each number is referenced with a span id in the javascript -->
+            <div class="counter">
+                <h2>Red Count: <span id="rCount">0</span></h2>
+                <p>Hover Count: <span id="rHoverCount">0</span></p>
+            </div>
+            <div class="counter">
+                <h2>Green Count: <span id="gCount">0</span></h2>
+                <p>Hover Count: <span id="gHoverCount">0</span></p>
+            </div>
+            <div class="counter">
+                <h2>Blue Count: <span id="bCount">0</span></h2>
+                <p>Hover Count: <span id="bHoverCount">0</span></p>
+            </div>
+        </div>
+
+        <!-- Extra credit: Defining the last clicked and hovered element -->
+        <div class="last-clicked">
+            <p>Last Clicked: <span id="lastClicked">None</span></p>
+            <p>Last Hovered: <span id="lastHovered">None</span></p>
+        </div>
+
+
+    </main>
+
+    <script>
+        // Initialize all counters to 0
+        let rCount = 0;
+        let gCount = 0;
+        let bCount = 0;
+        let rHoverCount = 0;
+        let gHoverCount = 0;
+        let bHoverCount = 0;
+        // Extra credit last clicked value
+        let lastClicked = 'None';
+        let lastHovered = 'None';
+
+        // Get DOM elements and set them to js variable
+        const body = document.body;
+        const rButton = document.querySelector('.color-button.red');
+        const gButton = document.querySelector('.color-button.green');
+        const bButton = document.querySelector('.color-button.blue');
+        const resetButton = document.querySelector('.reset-button');
+        const rCountDisplay = document.getElementById('rCount');
+        const gCountDisplay = document.getElementById('gCount');
+        const bCountDisplay = document.getElementById('bCount');
+        const rHoverCountDisplay = document.getElementById('rHoverCount');
+        const gHoverCountDisplay = document.getElementById('gHoverCount');
+        const bHoverCountDisplay = document.getElementById('bHoverCount');
+        const lastClickedDisplay = document.getElementById('lastClicked');
+        const lastHoveredDisplay = document.getElementById('lastHovered');
+
+        // Update counter displays is used to update the values in each counter
+        function updateCounters() {
+            rCountDisplay.textContent = rCount; // Assign the html text to the js counter variable
+            gCountDisplay.textContent = gCount;
+            bCountDisplay.textContent = bCount;
+            rHoverCountDisplay.textContent = rHoverCount;
+            gHoverCountDisplay.textContent = gHoverCount;
+            bHoverCountDisplay.textContent = bHoverCount;
+            lastClickedDisplay.textContent = lastClicked;
+            lastHoveredDisplay.textContent = lastHovered;
+        }
+
+        // Function resets all the counters and changes the background to starting color
+        function resetCounters() {
+            rCount = 0;
+            gCount = 0;
+            bCount = 0;
+            rHoverCount = 0;
+            gHoverCount = 0;
+            bHoverCount = 0;
+            lastClicked = 'None';
+            lastHovered = 'None';
+            body.style.backgroundColor = ''; // Reset background to default
+            updateCounters(); // Call updateCounters to change values
+        }
+
+        // Event listeners look for clicking action of buttons
+        rButton.addEventListener('click', () => {
+            body.style.backgroundColor = '#ff0000'; // Change background color
+            rCount++; // Increase click count
+            lastClicked = 'Red';
+            updateCounters(); // Call updateCounters to update the values on screen
+        });
+
+        gButton.addEventListener('click', () => {
+            body.style.backgroundColor = '#00ff00';
+            gCount++;
+            lastClicked = 'Green';
+            updateCounters();
+        });
+
+        bButton.addEventListener('click', () => {
+            body.style.backgroundColor = '#0000ff';
+            bCount++;
+            lastClicked = 'Blue';
+            updateCounters();
+        });
+
+        // Event listeners for hover over each button
+        rButton.addEventListener('mouseenter', () => {
+            rHoverCount++; // Increase hover count
+            lastHovered = 'Red';
+            updateCounters(); // Call updateCounters to change on screen
+        });
+
+        gButton.addEventListener('mouseenter', () => {
+            gHoverCount++;
+            lastHovered = 'Green';
+            updateCounters();
+        });
+
+        bButton.addEventListener('mouseenter', () => {
+            bHoverCount++;
+            lastHovered = 'Blue';
+            updateCounters();
+        });
+
+        // Event listener for the reset button which calls reset counters
+        resetButton.addEventListener('click', () => {
+            resetCounters(); // Call resetCounters to set values to 0
+        });
+
+        // Add navbar
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

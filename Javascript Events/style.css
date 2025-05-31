@@ -1,0 +1,311 @@
+/* Global styles for the page */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main page body style */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body takes at least full viewport height */
+    background-color: #f0f0f0;
+    color: #333333; /* College avenue grey text */
+    line-height: 1.6;
+}
+
+/* Container for center content */
+.container {
+    width: 90%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Header section */
+.header-section {
+    background-color: #F56600; /* Solid clemson orange */
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Header for header section */
+.header-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Header section text  */
+.header-section p {
+    font-size: 1.1rem;
+}
+
+/* Main content area */
+.main-content-area {
+    padding: 30px 0;
+}
+
+/* Content sections margin */
+.content-section {
+    margin-bottom: 40px;
+}
+
+/* Title format for the sections */
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333333; /* College avenue color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Card styling is for the sections on the page */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #C8C9C7; /* Reflection color */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Card header */
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #F56600; 
+    margin-bottom: 8px;
+}
+.card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #522D80; 
+    margin-bottom: 8px;
+}
+
+/* Card text */
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Images to be displayed on site */
+.card-image {
+    width: 75%;
+    height: auto;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+/* Iframe style*/
+.card-iframe {
+    width: 90%;
+    height: 100vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Nav bar styling */
+nav {
+    border-bottom: 2px solid #F56600;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left
+}
+
+li a {
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+li a:hover {
+  background-color: #522D80;
+}
+
+/* Dropdown styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Footer styling */
+.my-footer {
+    background-color: #333333; 
+    color: #f0f0f0;       
+    text-align: center;
+    padding: 30px 20px;
+    width: 100%;
+    border-top: 2px solid #F56600; /* Clemson Orange top border */
+}
+
+.my-footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.my-footer a {
+    color: #F56600; /* Clemson Orange for links */
+    text-decoration: none;
+}
+
+.my-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Aside style */
+aside {
+    text-align: right;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+aside h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Main content container for prog04 */
+.prog04-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Button containers */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Button styles with no hover */
+.color-button {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+/* Button style with hover */
+.color-button:hover {
+    transform: scale(1.05); /* Increase size of button when hovering*/
+}
+
+/* Reset button style */
+.reset-button {
+    background-color: #555;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+/* Reset button style with hover */
+.reset-button:hover {
+    background-color: #777; /* Lighter grey */
+    transform: scale(1.05); /* Increase size */
+}
+
+/* Last clicked text style */
+.last-clicked {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Counter box styles */
+.counters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Change grid if screen shrinks */
+    gap: 2rem; /* Gap between boxes */
+    width: 100%; /* Box width */
+    max-width: 800px; /* All buttons fit beside one another */
+}
+
+.counter {
+    background-color: #777;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* prog4 button hover designs */
+.color-button.red:hover {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.color-button.green:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
+.color-button.blue:hover {
+    background-color: #0000ff;
+    color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    .color-button, .reset-button {
+        width: 100%;
+        padding: 1rem;
+    }
+}
