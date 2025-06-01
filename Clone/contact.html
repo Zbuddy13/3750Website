@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="navbar"></div> <!-- added nav bar reference to js -->
+
+    <footer class="my-footer">
+        <p><a href="mailto:jzshaw@clemson.edu">jzshaw@clemson.edu</a></p>
+        <p>James Shaw. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
