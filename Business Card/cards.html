@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Business Cards</title>
+    <script type="text/javascript" src="cards.js"></script>
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <h1 style="text-align: center;">JavaScript Business Cards</h1>
+    <!-- Add code to replicate input form from video -->
+
+    <div class="card-container">
+        <div class="left-column">
+            <div class="card-form">
+                <h2>Add New Card</h2>
+                <form id="cardForm">
+                    <!-- Create all the input fields -->
+                    <input type="text" id="name" placeholder="Name" required><br>
+                    <input type="email" id="email" placeholder="Email" required><br>
+                    <input type="text" id="address" placeholder="Address" required><br>
+                    <input type="tel" id="phone" placeholder="Phone" required><br>
+                    <input type="date" id="birthdate" required><br>
+                    <button type="button" onclick="addNewCard()">Add New Card</button>
+                </form>
+                <button id="toggleButton" onclick="toggleCards()">Show All Cards</button>
+            </div>
+        </div>
+        <div id="cardOutput" class="card-table" style="display: none;"></div>
+    </div>
+    
+    <!-- Add the nav bar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+
+</body>
+</html>
