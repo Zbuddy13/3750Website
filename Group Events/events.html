@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Events</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* For each section of questions */
+        .section {
+            border-bottom: 2px solid #522D80;
+            padding: 20px;
+        }
+        /* Style for box to be animated */
+        .animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: #F56600;
+            position: relative;
+            margin-top: 20px;
+        }
+        /* Animation style */
+        .animate {
+            animation: move 4s ease-in-out;
+        }
+        /* Move animation */
+        @keyframes move {
+            0% { left: 0; }
+            50% { left: 200px; }
+            100% { left: 0; }
+        }
+        /* Drag box style */
+        .drag-box {
+            width: 100px;
+            height: 100px;
+            background-color: #F56600;
+            cursor: move;
+            user-select: none;
+        }
+        /* Zone for box drop style */
+        .drop-zone {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #522D80;
+            margin-top: 20px;
+        }
+        /* Input box style */
+        .input-field {
+            padding: 5px;
+            width: 200px;
+        }
+        /* Area for mouse events */
+        .mouse-area {
+            width: 200px;
+            height: 200px;
+            background-color: #F56600;
+            margin-top: 10px;
+        }
+        /* Field to enter text */
+        .focus-field {
+            padding: 5px;
+            width: 200px;
+        }
+        /* Response for each event */
+        .response {
+            margin-top: 10px;
+            font-size: 14px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Group Events</h1>
+    <!-- Animation Events Section -->
+    <div class="section">
+        <h2>1. Animation Events</h2>
+        <!-- Call start animation -->
+        <button onclick="startAnimation()">Start Animation</button>
+        <!-- Map button and text -->
+        <div id="animationBox" class="animation-box"></div>
+        <div id="animationResponse" class="response"></div>
+    </div>
+
+    <!-- Drag Events Section -->
+    <div class="section">
+        <h2>2. Drag Events</h2>
+        <p>Drag the box into the drop zone.</p>
+        <!-- Setup the drag box, zone, and response -->
+        <div id="dragBox" class="drag-box" draggable="true">Drag Me</div>
+        <div id="dropZone" class="drop-zone">Drop Here</div>
+        <div id="dragResponse" class="response"></div>
+    </div>
+
+    <!-- Input Events Section -->
+    <div class="section">
+        <h2>3. Input Events</h2>
+        <p>Type in the input field to trigger input events.</p>
+        <!-- Setup input field -->
+        <input type="text" id="inputField" class="input-field" placeholder="Type here...">
+        <div id="inputResponse" class="response"></div>
+    </div>
+
+    <!-- Mouse Events Section -->
+    <div class="section">
+        <h2>4. Mouse Events</h2>
+        <p>Interact with the area to trigger mouse events.</p>
+        <!-- Setup area for mouse trigger -->
+        <div id="mouseArea" class="mouse-area"></div>
+        <div id="mouseResponse" class="response"></div>
+    </div>
+
+    <!-- Focus Events Section -->
+    <div class="section">
+        <h2>5. Focus Events</h2>
+        <p>Click in and out of the input field to trigger focus events.</p>
+        <!-- Setup area for focus event -->
+        <input type="text" id="focusField" class="focus-field" placeholder="Click here...">
+        <div id="focusResponse" class="response"></div>
+    </div>
+
+    <script>
+        // Animation Events
+        const animationBox = document.getElementById('animationBox');
+        const animationResponse = document.getElementById('animationResponse');
+        // Function used to initiate the cube
+        function startAnimation() {
+            // Restart the animation by removing and adding the animate style
+            animationBox.classList.remove('animate');
+            void animationBox.offsetWidth; // Trigger layout recalculation after remove
+            animationBox.classList.add('animate');
+        }
+        // Listeners to track animation progress
+        animationBox.addEventListener('animationstart', () => {
+            animationResponse.textContent = 'Animation started';
+        });
+        animationBox.addEventListener('animationiteration', () => {
+            animationResponse.textContent = 'Animation iteration';
+        });
+        animationBox.addEventListener('animationend', () => {
+            animationResponse.textContent = 'Animation ended';
+        });
+
+        // Drag Events
+        const dragBox = document.getElementById('dragBox');
+        const dropZone = document.getElementById('dropZone');
+        const dragResponse = document.getElementById('dragResponse');
+        // When the dragging starts
+        dragBox.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', 'Dragging');
+            dragResponse.textContent = 'Drag started';
+        });
+        // When the dragging stops
+        dragBox.addEventListener('dragend', () => {
+            dragResponse.textContent = 'Drag ended';
+        });
+        // When the box is dragged over
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragResponse.textContent = 'Dragging over drop zone';
+        });
+        // When the box is taken out of zone
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dragResponse.textContent = 'Left drop zone';
+        });
+
+        // Input Events
+        const inputField = document.getElementById('inputField');
+        const inputResponse = document.getElementById('inputResponse');
+        // Add listener that tracks what is typed in
+        inputField.addEventListener('input', (e) => {
+            inputResponse.textContent = `Input changed: ${e.target.value}`;
+        });
+        // Listener tracks enter key press
+        inputField.addEventListener('change', (e) => {
+            inputResponse.textContent = `Input confirmed: ${e.target.value}`;
+        });
+
+        // Mouse Events
+        const mouseArea = document.getElementById('mouseArea');
+        const mouseResponse = document.getElementById('mouseResponse');
+        // Add listeners for mouse events in zone
+        mouseArea.addEventListener('click', () => {
+            mouseResponse.textContent = 'Mouse clicked';
+        });
+        mouseArea.addEventListener('mouseover', () => {
+            mouseResponse.textContent = 'Mouse in';
+        });
+        mouseArea.addEventListener('mouseout', () => {
+            mouseResponse.textContent = 'Mouse out';
+        });
+
+        // Focus Events
+        const focusField = document.getElementById('focusField');
+        const focusResponse = document.getElementById('focusResponse');
+        // Add listener for when text box is clicked and unclicked via focus and blur
+        focusField.addEventListener('focus', () => {
+            focusResponse.textContent = 'Input focused';
+        });
+        focusField.addEventListener('blur', () => {1
+            focusResponse.textContent = 'Input unfocused';
+        });
+        // Added navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
