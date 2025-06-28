@@ -1,0 +1,130 @@
+/* Header */
+header {
+    background-color: #9b9b9b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Navbar */
+nav {
+    background-color: #333333;
+    overflow: hidden;
+}
+
+/* Navbar text */
+nav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Content area */
+.content {
+    margin: 20px;
+    padding: 20px;
+    background-color: #e0e0e0;
+}
+
+/* Box Model style */
+.box-model {
+    background-color: white;
+    border: 5px solid #F56600;
+    padding: 20px;
+    margin: 20px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+/* Icons */
+.icons {
+    margin: 20px;
+    font-size: 24px;
+}
+
+/* Ordered and Unordered Lists */
+.lists {
+    margin: 20px;
+}
+
+.lists ul, .lists ol {
+    margin: 10px 0;
+}
+
+.lists ol{
+    list-style-type: upper-roman;
+}
+
+/* Table style */
+.table-container {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #522D80;
+    color: white;
+}
+
+/* Responsive table design */
+.responsive-table {
+    margin: 20px;
+    overflow-x: auto;
+}
+
+/* Image Gallery */
+.gallery {
+    margin: 20px;
+}
+
+.gallery img {
+    width: 23%;
+    margin: 1%;
+    float: left;
+}
+
+/* Float example with image*/
+.float-ex {
+    margin: 20px;
+}
+
+.float-ex img {
+    float: left;
+    margin-right: 15px;
+    width: 100px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .gallery img {
+        width: 50%;
+        margin: 2%;
+    }
+    nav a {
+        float: none;
+        display: block;
+    }
+}

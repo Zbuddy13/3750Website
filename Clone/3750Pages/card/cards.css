@@ -1,0 +1,53 @@
+/* Container to hold the add new card and the table */
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 2%;
+    margin-right: 2%;
+    gap: 20px; /* Gap inbetween the tables */
+}
+/* The left side that holds the add new card entry */
+.left-column {
+    flex: 1;
+    max-width: 400px;
+}
+/* right side that holds the table */
+.card-table {
+    flex: 2;
+}
+/* Format for both sides*/
+.card-form, .card-table {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #522D80;
+    border-radius: 6px;
+}
+/* Input format */
+.card-form input {
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+}
+/* Button format */
+.card-form button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+.card-form button:hover {
+    background-color: #F56600;
+}
+/* Table format */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #522D80;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #F56600;
+}

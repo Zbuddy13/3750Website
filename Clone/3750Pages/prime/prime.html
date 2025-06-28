@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang=”en”>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Program Exam 1</title>
+        <!-- Import js and style sheets -->
+        <script type="text/javascript" src="prime.js"></script>
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="prime.css">
+    </head>
+<body>
+    <!-- Add global nav bar -->
+    <div id="navbar"></div>
+    <!-- Header for page -->
+    <h1 style="text-align: center;">Prime and Non-Prime Numbers</h1>
+    <!-- User number input -->
+    <input type="number" id="userInput" placeholder="Enter a number" min="1">
+    <!-- Button to call generate list from js -->
+    <button-prime onclick="generateLists()">SUBMIT</button-prime>
+    <!-- Create container to house prime and non prime numbers -->
+    <div class="container-prime">
+        <div class="list-container-prime" id="primeList">
+            <h2>Prime Numbers</h2>
+            <ul id="primeNumbers"></ul>
+            <!-- Call function to return sum -->
+            <button-prime onclick="showSum('primeNumbers', 'primeSum')">SUM</button-prime>
+            <div id="primeSum" class="sum"></div>
+        </div>
+        <div class="list-container-prime" id="nonPrimeList">
+            <h2>Non-Prime Numbers</h2>
+            <ul id="nonPrimeNumbers"></ul>
+            <!-- Call function to return sum -->
+            <button-prime onclick="showSum('nonPrimeNumbers', 'nonPrimeSum')">SUM</button-prime>
+            <div id="nonPrimeSum" class="sum"></div>
+        </div>
+    </div>
+    <script>
+        // Add nav bar to top
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

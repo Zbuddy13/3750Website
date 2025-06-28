@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Move</title>
+    <!-- Import the javascript to be used -->
+    <script type="text/javascript" src="ButtonMove.js"></script>
+    <!-- Import the navbar style sheet and the buttom move style -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="ButtonMove.css">
+</head>
+<body>
+    <!-- Add global nav bar -->
+    <div id="navbar"></div>
+
+    <!-- Establish controls for program -->
+    <div class="controls">
+        <!-- ID the color select for the js -->
+        <select id="colorSelect">
+            <!-- Set the color and name of color in drop down -->
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Yellow">Yellow</option>
+            <option value="White">White</option>
+        </select>
+        <!-- Establish the make and move button -->
+        <button id="makeButton">Make Button</button>
+        <button id="moveButton">Move</button>
+        <!-- Create the score display -->
+        <div class="total-score">
+            <span>Total Score: </span><span id="totalSum">0</span>
+        </div>
+    </div>
+
+    <!-- Area to store the buttons -->
+    <div id="viewingArea"></div>
+
+    <script>
+        // Add nav bar to top
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+
+</body>
+</html>

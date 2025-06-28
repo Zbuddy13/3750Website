@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group CSS2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="GroupCSS2.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <!-- Sample Header -->
+    <header>
+        <h1>Test Header Heading</h1>
+        <p>This is the test header</p>
+    </header>
+
+    <!-- Sample Navbar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a style="float:right" href="#">Contact</a>
+    </nav>
+
+    <!-- Sample Content -->
+    <div class="content">
+        <h2>Test Content heading</h2>
+        <p>Test content area on the page</p>
+    </div>
+
+    <!-- Example Box Model -->
+    <div class="box-model">
+        <h3>Box Model</h3>
+        <p>This demonstrates the CSS box model with margin, border, padding, and content in the middle</p>
+    </div>
+
+    <!-- Icons Example -->
+    <div class="icons">
+        <h3>Icons</h3>
+        <i class="material-icons">cloud</i>
+        <i class="material-icons">favorite</i>
+        <i class="material-icons">attachment</i>
+        <p>Examples of icons from Google</p>
+    </div>
+
+    <!-- Ordered and Unordered Lists -->
+    <div class="lists">
+        <h3>Lists</h3>
+        <h4>Unordered List</h4>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <h4>Ordered List</h4>
+        <ol>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+        </ol>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <h3>Table</h3>
+        <table>
+            <tr>
+                <th>Week</th>
+                <th>Topic</th>
+                <th>Assignment</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>User Interface Design</td>
+                <td>Web Host</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>HTML and CSS</td>
+                <td>CSS Layout</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>JS</td>
+                <td>Javascript Events</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="responsive-table">
+        <h3>Responsive Table</h3>
+        <table>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+                <th>Column 5</th>
+            </tr>
+            <tr>
+                <td>Element 1</td>
+                <td>Element 2</td>
+                <td>Element 3</td>
+                <td>Element 4</td>
+                <td>Element 5</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="gallery">
+        <h3>Image Gallery</h3>
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg" alt="Image 1">
+        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg" alt="Image 2">
+        <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="Image 3">
+        <img src="https://tinypng.com/images/social/website.jpg" alt="Image 4">
+    </div>
+
+    <!-- Float example -->
+    <div class="float-ex">
+        <h3>Float</h3>
+        <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D" alt="Float Image">
+        <p>This text wraps around an image to the left</p>
+    </div>
+
+    <!-- Footer Example -->
+    <footer>
+        <p>Test Footer &copy; 2025 James Shaw Inc</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
+
