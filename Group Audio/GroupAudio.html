@@ -13,17 +13,20 @@
             border-radius: 5px;
         }
         /* Audio controller formatting */
-        .control-group {
+        .audio-control-group {
             margin: 10px 0;
         }
+        /* Section labels */
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
-        button, input[type="range"] {
+        /* Format for seek bar */
+        input[type="range"] {
             margin: 5px 0;
         }
+        /* Set color of status text */
         .status {
             color: #522D80;
             font-weight: bold;
@@ -32,14 +35,13 @@
 </head>
 <body>
     <div id="navbar"></div>
+    <h1>Group Audio</h1>
 
     <div class="audio-container">
-        <h1>Group Audio</h1>
-        
         <!-- Audio element -->
-        <div class="control-group">
+        <div class="audio-control-group">
             <label>Audio Player</label>
-            <audio id="myAudio" controls>
+            <audio id="audioPlayer" controls>
                 <!-- Add local audio from youtube -->
                 <source src="../audio/Sleep For 11 Hours Straight, High Quality Stereo Ocean Sounds Of Rolling Waves For Deep Sleeping.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -47,89 +49,93 @@
         </div>
 
         <!-- Play/Pause Status -->
-        <div class="control-group">
+        <div class="audio-control-group">
             <label>Play/Pause Status</label>
             <!-- Used to track when the audio has been played and paused -->
             <p>Played Event: <span id="playStatus" class="status">Not played yet</span></p>
             <p>Paused Event: <span id="pauseStatus" class="status">Not paused yet</span></p>
         </div>
 
+        <!-- Volume Control -->
+        <div class="audio-control-group">
+            <label>Volume Control</label>
+            <!-- Displays volume control to change output volume -->
+            <p>Current Volume: <span id="volumeStatus" class="status">100</span></p>
+            <input type="range" id="volumeControl" min="0" max="100" step="1" value="100">
+        </div>
+
         <!-- Duration -->
-        <div class="control-group">
+        <div class="audio-control-group">
             <label>Duration</label>
             <!-- Used to display the total length of the audio clip -->
             <p>Total Duration: <span id="duration" class="status">0:00</span></p>
         </div>
 
         <!-- Current Time -->
-        <div class="control-group">
+        <div class="audio-control-group">
             <label>Current Time</label>
             <!-- Displays current position in the audio track -->
             <p>Current Time: <span id="currentTime" class="status">0:00</span></p>
-            <input type="range" id="seekBar" min="0" value="0" step="1">
-        </div>
-
-        <!-- Volume Control -->
-        <div class="control-group">
-            <label>Volume Control</label>
-            <!-- Displays volume control to change output volume -->
-            <p>Current Volume: <span id="volumeStatus" class="status">1.0</span></p>
-            <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+            <input type="range" id="timeBar" min="0" value="0" step="1">
         </div>
     </div>
 
     <script>
         // Get DOM elements in order to alter
-        const audio = document.getElementById('myAudio');
+        const audio = document.getElementById('audioPlayer');
         const playStatus = document.getElementById('playStatus');
         const pauseStatus = document.getElementById('pauseStatus');
-        const durationDisplay = document.getElementById('duration');
-        const currentTimeDisplay = document.getElementById('currentTime');
-        const seekBar = document.getElementById('seekBar');
+        const durationDis = document.getElementById('duration');
+        const currentTimeDis = document.getElementById('currentTime');
+        const timeBar = document.getElementById('timeBar');
         const volumeControl = document.getElementById('volumeControl');
         const volumeStatus = document.getElementById('volumeStatus');
 
-        // Function to format time in MM:SS
+        // Function to format time
         function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            const hours = Math.floor(seconds/3600);
+            const minutes = Math.floor((seconds%3600)/60);
+            seconds = Math.floor(seconds%60);
+            return `${hours}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
         }
 
         // Check for when audio is loaded and update duration
         audio.addEventListener('loadedmetadata', () => {
-            durationDisplay.textContent = formatTime(audio.duration);
-            seekBar.max = Math.floor(audio.duration);
+            durationDis.textContent = formatTime(audio.duration);
+            timeBar.max = Math.floor(audio.duration);
         });
 
-        // Play event listener
+        // Play listener
         audio.addEventListener('play', () => {
             // When the content is set to play, update playStatus element
             playStatus.textContent = `Playing at ${formatTime(audio.currentTime)}`;
         });
 
-        // Pause event listener
+        // Pause listener
         audio.addEventListener('pause', () => {
             // When the content is paused, update pauseStatus element
             pauseStatus.textContent = `Paused at ${formatTime(audio.currentTime)}`;
         });
 
-        // Time update event listener
+        // Time update listener
         audio.addEventListener('timeupdate', () => {
-            currentTimeDisplay.textContent = formatTime(audio.currentTime);
-            seekBar.value = audio.currentTime;
+            // Update the time slider to match the player
+            currentTimeDis.textContent = formatTime(audio.currentTime);
+            timeBar.value = audio.currentTime;
         });
 
-        // Volume change event listener
+        // Volume change listener
         volumeControl.addEventListener('input', () => {
-            audio.volume = volumeControl.value;
-            volumeStatus.textContent = audio.volume.toFixed(1);
+            // Change the volume based on slider
+            audio.volume = (volumeControl.value/100);
+            volumeStatus.textContent = volumeControl.value;
         });
 
-        // Seek bar event listener
-        seekBar.addEventListener('input', () => {
-            audio.currentTime = seekBar.value;
-            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        // Seek bar listener
+        timeBar.addEventListener('input', () => {
+            // Change position of audio track based on slider
+            audio.currentTime = timeBar.value;
+            currentTimeDis.textContent = formatTime(audio.currentTime);
         });
         // Added navbar code
         document.addEventListener('DOMContentLoaded', () => {
