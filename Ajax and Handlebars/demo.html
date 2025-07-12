@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX and Handlebars</title> 
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <header>
+        <h1>JSON and AJAX</h1>
+        <button class="a-button" id="btn">Fetch Info for 3 New Animals</button>
+    </header>
+
+    <div id="animal-info"></div>
+
+    <script src="demo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
