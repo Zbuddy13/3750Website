@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="hangmanstyle.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="script.js"></script>
+    <script>
+        // Added navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+   </script>
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1 style="text-align: center;">Hangman Game By: James Shaw</h1>
+    <div style="text-align: center;">
+        <label><input type="checkbox" id="cheatMode"> Cheat Mode (Show Word)</label>
+    </div>
+    <canvas id="hangmanCanvas" width="200" height="200"></canvas>
+    <div id="wordToGuess"></div>
+    <div id="letters"></div>
+    <div class="game-button">
+        <button onclick="startGame()">Start New Game</button>
+    </div>
+    
+</body>
+</html>

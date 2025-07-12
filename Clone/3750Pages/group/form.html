@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group: Form</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Format for each label */
+        label { 
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold; 
+        }
+        /* Format for text, password, url, and textarea */
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 250px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #522D80;
+            border-radius: 5px;
+        }
+        /* Format for checkbox and radio */
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        /* Format Used for each type of form */
+        .form-group {
+            margin-bottom: 25px;
+            padding: 10px;
+            border: 2px solid #C8C9C7;
+            border-radius: 5px;
+            background-color: #ffffff;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #F56600;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 50px;
+            margin-bottom: 25px;
+        }
+        .submit-button:hover {
+            background-color: #522D80;
+        }
+    </style>
+</head>
+<body>
+    <!-- Adding the nav bar -->
+    <div id="navbar"></div>
+
+    <h1 style="margin-left: 50px;" >Group: Form</h1>
+    <!-- Establishing the form and php script to send to -->
+    <form action="form.php" method="post" enctype="multipart/form-data">
+
+        <!-- Demonstrating with text input -->
+        <div class="form-group">
+            <label for="name">Text Input:</label>
+            <input type="text" id="name" name="username" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Demonstrating text area input -->
+        <div class="form-group">
+            <label for="message">Text Area:</label>
+            <textarea id="message" name="message" rows="5" cols="45" placeholder="Type your message here"></textarea>
+        </div>
+
+        <!-- Demonstrating hidden data -->
+        <div class="form-group">
+            <label for="hidden">Hidden Text:</label>
+            <input type="hidden" id="hidden" name="hidden" value="you cannot see this text">
+        </div>
+
+        <!-- Demonstrating password input -->
+        <div class="form-group">
+            <label for="password">Password Input:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password here" required>
+        </div>
+
+        <!-- Demonstrating array of checkboxes -->
+        <div class="form-group">
+            <label>Array of Checkboxes (Interests):</label>
+            <input type="checkbox" id="int1" name="interests[]" value="coding">
+            <label for="int1">Coding</label><br>
+            <input type="checkbox" id="int2" name="interests[]" value="homework">
+            <label for="int2">Homework</label><br>
+            <input type="checkbox" id="int3" name="interests[]" value="working on cars">
+            <label for="int3">Working on cars</label><br>
+            <input type="checkbox" id="int4" name="interests[]" value="outdoors">
+            <label for="int4">Outdoors</label>
+        </div>
+
+        <!-- Demonstrating radio buttons -->
+        <div class="form-group">
+            <label>Radio Buttons (Preferred Contact Method):</label>
+            <input type="radio" id="contact_email" name="contact_method" value="email" checked>
+            <label for="contact_email">Email</label><br>
+            <input type="radio" id="contact_sms" name="contact_method" value="sms">
+            <label for="contact_sms">SMS</label><br>
+            <input type="radio" id="contact_phone" name="contact_method" value="phone">
+            <label for="contact_phone">Phone</label>
+        </div>
+
+        <!-- Demonstrating selection list -->
+        <div class="form-group">
+            <label for="country">Selection List (Country):</label>
+            <select id="country" name="country">
+                <option value="">--Please choose an option--</option>
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Demonstrating file upload -->
+        <div class="form-group">
+            <label for="profile_pic">File Input (Upload Profile Picture):</label>
+            <input type="file" id="profile_pic" name="profile_pic">
+        </div>
+
+        <!-- Demonstrating url input -->
+        <div class="form-group">
+            <label for="user_url">URL:</label>
+            <input type="url" id="user_url" name="user_url" placeholder="e.g., https://pandanas.net" required>
+        </div>
+
+        <!-- Used to submit the form to the php script -->
+        <button class="submit-button" type="submit">Submit Form</button>
+    </form>
+
+    <!-- Script for the navbar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

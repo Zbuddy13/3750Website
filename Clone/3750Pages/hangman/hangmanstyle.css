@@ -1,0 +1,49 @@
+#wordToGuess {
+   margin: 20px;
+   font-size: 24px;
+   /* Add letter spacing */
+   letter-spacing: 5px;
+   text-align: center;
+}
+/* Add formatting for letters */
+#letters {
+   display: grid;
+   /* Grid of buttons */
+   grid-template-columns: repeat(5, 1fr);
+   gap: 5px;
+   max-width: 300px;
+   margin: 0 auto;
+}
+
+#letters button {
+   margin: 5px;
+   padding: 10px;
+   width: 40px;
+   /* Add height */
+   height: 40px; 
+}
+/* Add format for the canvas */
+#hangmanCanvas {
+   margin: 20px auto;
+   display: block;
+}
+/* Add button format */
+.game-button {
+   text-align: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.game-button button {
+   background-color: #F56600;
+   text-align: center;
+   padding: 15px 32px;
+   font-size: 16px;
+   cursor: pointer;
+   width: 10%;
+   color: white;
+}
+
+.hidden {
+   visibility: hidden;
+}

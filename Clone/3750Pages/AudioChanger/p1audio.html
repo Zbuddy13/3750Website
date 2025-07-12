@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: Audio Changer</title> 
+    <!-- Add the appropriate style sheets -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="p1audio.css">
+    <script>
+        // Added navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</head>
+<body>
+    <!-- Add nav bar -->
+    <div id="navbar"></div>
+    <!-- Create player container to hold audio features -->
+    <div class="audio-container">
+        <!-- Info class contains the tracks info -->
+        <div class="stats">
+            <h2>Project 1: Audio Player</h2>
+            <!-- Display the filename -->
+            <p>File Name: <span id="fileName">ProjectFarm_MotorOil.mp3</span></p>
+            <!-- Display the time in the track -->
+            <p>Current Time: <span id="currentTime" style="font-weight: bold;">0:00</span></p>
+        </div>
+        <!-- Control elements -->
+        <div class="controls">
+            <button onclick="togglePlayPause()">Play</button>
+            <button onclick="rewind()">Rewind 5s</button>
+            <button onclick="forward()">Forward 5s</button>
+            <button onclick="addTitle()">Add Title</button>
+            <button onclick="removeTitle()">Remove Current Title</button>
+        </div>
+        <!-- Display list of titles -->
+        <div class="titleList" id="playlist"></div>
+    </div>
+
+    <audio id="audioPlayer">
+        <!-- Add local audio from youtube -->
+        <source src="../audio/MotorOil.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Import the audio js script -->
+    <script type="text/javascript" src="p1audio.js"></script>
+</body>
+</html>

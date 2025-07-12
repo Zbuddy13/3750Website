@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Base Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Accordian, progress bar, and date picker -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+<!-- Smooth ui -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="../style.css">
+<script>
+    // Added navbar code
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    });
+    // jQuery code
+    $(document).ready(function(){
+
+        // 1. Change the background color of a div to yellow when mouse over
+        $("div").mouseover(function(){
+            $(this).css("background-color", "yellow");
+        // 2. Change background to white when mouse exits
+        }).mouseout(function(){
+            $(this).css("background-color", "white");
+        });
+        // 3. Fade buttons for div 1, 2, and 3
+        // 4. Add fade out interaction
+        $("#fade1").click(function(){
+            $("#div1").fadeOut();
+        });
+        $("#fade2").click(function(){
+            $("#div2").fadeOut();
+        });
+        $("#fade3").click(function(){
+            $("#div3").fadeOut();
+        });
+        // 5. Initialize datepicker
+        $("#datepicker").datepicker();
+        // 6. Initialize accordion
+        $("#accordion").accordion({
+            collapsible: true,
+            heightStyle: "content"
+        });
+        // 7. Initialize and update progressbar
+        $("#progressbar").progressbar({
+            value: 0
+        });
+        // Set variables for the progress bar
+        let progress = 0;
+        // Total time of 20 seconds
+        const totalTime = 20000;
+        // 1 second interevals
+        const interval = 1000;
+        // Calculate rate of progress
+        const increment = 100 / (totalTime / interval);
+        // Set the progress intereval
+        let progressInterval = setInterval(function(){
+            // Increment every 1 second
+            progress += increment;
+            // Update progress bar
+            $("#progressbar").progressbar("value", progress);
+            // When progress reaches 100
+            if (progress >= 100) {
+                // Remove the intereval
+                clearInterval(progressInterval);
+            }
+        }, interval);
+    });
+</script>
+<style>
+    .ui-progressbar {
+        height: 15px;
+        margin: 10px 0;
+    }
+</style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <h1>jQuery Example</h1>
+
+    <!-- Datepicker -->
+    <h3>Date Picker</h3>
+    <div>
+        <p>Date: <input type="text" id="datepicker"></p>
+    </div>
+
+    <!-- Fade buttons -->
+    <h3>Fade Buttons</h3>
+    <button id="fade1" style="padding: 10px 15px">Fade Div 1</button>
+    <button id="fade2" style="padding: 10px 15px">Fade Div 2</button>
+    <button id="fade3" style="padding: 10px 15px">Fade Div 3</button>
+
+    <br>
+    <!-- Divs to be collapsed -->
+    <div id="div1" style="border: 1px solid black;">
+        <p>A paragraph in a div.</p>
+        <p>Another paragraph in a div.</p>
+    </div>
+    <br>
+
+    <div id="div2" style="border: 1px solid black;">
+        <p>A paragraph in another div.</p>
+        <p>Another paragraph in another div.</p>
+    </div>
+    <br>
+
+    <div id="div3" style="border: 1px solid black;">
+        <p>A paragraph in another div.</p>
+        <p>Another paragraph in another div.</p>
+    </div>
+
+    <!-- Progressbar -->
+    <h3>Progress bar</h3>
+    <div id="progressbar"></div>
+
+    <!-- Accordion -->
+     <h3>Accordion</h3>
+    <div id="accordion">
+        <h3>Section 1</h3>
+        <div>
+            <p>Content for section 1.</p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+            <p>Content for section 2.</p>
+        </div>
+        <h3>Section 3</h3>
+        <div>
+            <p>Content for section 3.</p>
+        </div>
+    </div>
+
+</body>
+</html>

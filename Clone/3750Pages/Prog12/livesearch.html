@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AJAX Live Search Example</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="ajax.js"></script>
+    <script> 
+      // Used in junction with ajax to seach the list of values from the php code
+      function searchStates() {
+        // Set the seach input to a variable to be used
+        var searchTerm = document.getElementById('searchInput').value;
+        // Use the callback to call the display results function
+        ajaxCallback = displayResults;
+        // Make the ajax request to search for the term the user types
+        ajaxRequest('search.php?query=' + encodeURIComponent(searchTerm));
+      }
+      // Used to display list of results from query
+      function displayResults() {
+        // Set the ajax request xml to var xml
+        var xml = ajaxreq.responseXML;
+        // Set the array of results equal to states
+        var states = xml.getElementsByTagName('state');
+        // Create the output html starting with the ul element
+        var output = '<ul>';
+        // For each of the results in state array, add the element to the html list
+        for (var i = 0; i < states.length; i++) {
+          // Testing can pull state 
+          //var state = states[i].getElementsByTagName('name')[0].firstChild.nodeValue;
+          // Pull the capital from the list
+          var capital = states[i].getElementsByTagName('capital')[0].firstChild.nodeValue;
+          // Add the capital to the list
+          output += '<li>' + capital + '</li>';
+        }
+        output += '</ul>';
+        // Using dom place list in the results div
+        document.getElementById('results').innerHTML = output;
+      }
+      // Added navbar code
+      document.addEventListener('DOMContentLoaded', () => {
+          fetch('../navbar.html')
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById('navbar').innerHTML = data;
+              });
+      });
+    </script>
+  </head>
+    <body>
+      <div id="navbar"></div>
+      <h1>AJAX Live Search Example</h1>
+      <!-- Input label for search -->
+      <label for="searchInput">Search for a state:</label>
+      <!-- Text input for search -->
+      <input type="text" id="searchInput" onkeyup="searchStates()" placeholder="Type a state name...">
+      <!-- Div element to display search results -->
+      <div id="results">[Search results will display here.]</div>
+    </body>
+</html>
