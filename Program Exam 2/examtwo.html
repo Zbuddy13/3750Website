@@ -3,151 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vowel Counter</title>
+    <title>Program Exam 2</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Formatting for the entire container */
+        .vowel-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
         }
+        /* Start of button class formatting */
         .buttons {
             margin-bottom: 20px;
         }
+        /* Formatting for each vowel count button */
         .buttons button {
             padding: 10px 15px;
             margin: 5px;
             cursor: pointer;
+            background-color: #F56600;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
+        /* Hover format for the button */
+        .buttons button:hover {
+            background-color: #522D80;
+        }
+        /* Word list formatting */
         #wordList {
-            max-height: 400px;
+            max-height: 200px;
             overflow-y: auto;
             border: 1px solid #ccc;
             padding: 10px;
-            margin-bottom: 20px; /* Added margin */
+            margin-bottom: 20px;
         }
+        /* Style for main list */
         #wordList ul {
             list-style: none;
             padding: 0;
         }
+        /* Style for each list element */
         #wordList li {
             padding: 5px 0;
-            cursor: grab; /* Indicate draggable */
+            /* Indicate draggable */
+            cursor: grab;
         }
+        /* Style for drop area */
         #dropArea {
-            border: 2px dashed #007bff;
+            border: 2px dashed #F56600;
             padding: 20px;
             min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2em;
-            color: #555;
-            flex-wrap: wrap; /* Allow dropped items to wrap */
-            gap: 10px; /* Space between dropped items */
+            font-size: 1.1em;
+            color: #522D80;
+            /* Allow dropped items to wrap */
+            flex-wrap: wrap;
+            /* Space between dropped items */
+            gap: 8px;
         }
+        /* Highlight for the area when an element is hovering */
         #dropArea.highlight {
-            background-color: #e2f0ff;
+            background-color: #f0be9b;
         }
+        /* Format for the word after it has been dropped */
         .dropped-word {
-            background-color: #007bff;
+            background-color: #522D80;
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
         }
+        /* Format for the word counter */
         #droppedWordCount {
             margin-top: 10px;
-            font-size: 1.1em;
+            font-size: 1.0em;
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Words by Vowel Count</h1>
-    <div class="buttons" id="vowelButtons"></div>
-    <div id="wordList">
-        <ul id="words"></ul>
+    <!-- Add navbar to the top -->
+    <div id="navbar"></div>
+    <div class="vowel-container">
+        <h1 style="text-align: center;">Vowel Counter</h1>
+        <!-- Create div of buttons to house the vowel buttons -->
+        <div class="buttons" id="vowelButtons"></div>
+        <!-- Create div element to hold the word list -->
+        <div id="wordList">
+            <!-- Create the word list element -->
+            <ul id="words"></ul>
+        </div>
+        <h2 style="text-align: center;">Drag and Drop Area</h2>
+        <!-- Create the div element to house the number of words dropped -->
+        <div id="droppedWordCount">
+            Number of words dropped: 0
+        </div>
+        <!-- Create the drop area where you can place words -->
+        <div id="dropArea">
+            Drag and drop words here
+        </div>
     </div>
-
-    <h2>Drop Area</h2>
-    <div id="dropArea">
-        Drag and drop words here
-    </div>
-    <div id="droppedWordCount">
-        Number of words dropped: 0
-    </div>
-
     <script>
-        let droppedCount = 0; // Initialize counter for dropped words
-
+        // Initialize counter for words dropped in the box
+        let droppedCount = 0;
         // Fetch vowel counts from PHP
         fetch('examtwo.php?action=get_vowel_counts')
+        // get the response in json
             .then(response => response.json())
             .then(data => {
+                // Grab the dom element for the vowel buttons
                 const buttonContainer = document.getElementById('vowelButtons');
-                // Create buttons for each unique vowel count
+                // Create buttons for each unique vowel count (1-infinity)
                 data.vowelCounts.forEach(count => {
+                    // Create dom button
                     const button = document.createElement('button');
+                    // Set the context of the button to the number of vowels
                     button.textContent = count;
+                    // Set the button on click to call the fetch words js function
                     button.onclick = () => fetchWords(count);
+                    // Add the button to the button container
                     buttonContainer.appendChild(button);
                 });
             });
-
-        // Fetch words for a specific vowel count
+        // Define the function to fetch words for a specific vowel count
         function fetchWords(vowelCount) {
+            // Make the fetch call with the specified vowels
             fetch(`examtwo.php?action=get_words&vowel_count=${vowelCount}`)
+            // get the response in json
                 .then(response => response.json())
                 .then(data => {
+                    // Get the dom element with the word list
                     const wordList = document.getElementById('words');
+                    // Clear the html
                     wordList.innerHTML = '';
+                    // For each word that is returned from php
                     data.words.forEach(word => {
+                        // Create a new list element
                         const li = document.createElement('li');
+                        // Set the context to the word
                         li.textContent = word;
-                        li.setAttribute('draggable', true); // Make list items draggable
+                        // A functionality: Make list items draggable
+                        li.setAttribute('draggable', true);
+                        // Set the listener to the dragstart fuction
                         li.addEventListener('dragstart', dragStart);
+                        // Add the element to the list
                         wordList.appendChild(li);
                     });
                 });
         }
+        // A functionality: Drag and Drop functionality
 
-        // Drag and Drop functionality
+        // Set the dom element drop area and dripped word count
         const dropArea = document.getElementById('dropArea');
         const droppedWordCount = document.getElementById('droppedWordCount');
-
+        // Function used to initiate the drag element
         function dragStart(e) {
-            e.dataTransfer.setData('text/plain', e.target.textContent); // Set the data to be transferred (the word)
+            // Set the data to be transferred (the word being dragged)
+            e.dataTransfer.setData('text/plain', e.target.textContent);
+            // Specify the move drag effect
             e.dataTransfer.effectAllowed = 'move';
         }
-
+        // Listener for the drop area. fires constantly while word is being held over zone
         dropArea.addEventListener('dragover', (e) => {
-            e.preventDefault(); // Prevent default to allow drop
-            dropArea.classList.add('highlight'); // Add highlight
+            // Override default to allow drop
+            e.preventDefault();
+            // Highlight the drop area when being dragged over
+            dropArea.classList.add('highlight');
+            // Set visual feedback for move operation
             e.dataTransfer.dropEffect = 'move';
         });
-
-        dropArea.addEventListener('dragleave', () => {
-            dropArea.classList.remove('highlight'); // Remove highlight
-        });
-
+        // Listener for whan a word is dropped in an area
         dropArea.addEventListener('drop', (e) => {
+            // Override default to allow drop
             e.preventDefault();
-            dropArea.classList.remove('highlight'); // Remove highlight
-
+            // Remove highlight
+            dropArea.classList.remove('highlight');
+            // Get the word that was set in the dragstart function
             const data = e.dataTransfer.getData('text/plain');
-            
             // If the drop area still contains the initial "Drag and drop words here" text, remove it
             if (dropArea.textContent.includes('Drag and drop words here')) {
+                // Clear the html
                 dropArea.innerHTML = '';
             }
-
+            // Create a span element to hold the dropped words so they appear in the area
             const droppedWordSpan = document.createElement('span');
+            // Add the css style to the element
             droppedWordSpan.classList.add('dropped-word');
+            // Set the context to the word that was dropped
             droppedWordSpan.textContent = data;
+            // Append the span word element to the area so it displays properly
             dropArea.appendChild(droppedWordSpan);
-
+            // Update the word cound and set the context
             droppedCount++;
             droppedWordCount.textContent = `Number of words dropped: ${droppedCount}`;
+        });
+        // Listener for when the element leaves the drag area
+        dropArea.addEventListener('dragleave', () => {
+            // Remove the area highlight
+            dropArea.classList.remove('highlight');
+        });
+        // Navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
         });
     </script>
 </body>
