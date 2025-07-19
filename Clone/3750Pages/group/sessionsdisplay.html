@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Sessions: Car Display Page</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        #display a,
+        #display button {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 10px;
+            /* Get rid of underline */
+            text-decoration: none;
+            color: white;
+            background-color: #F56600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            /* Ensure they are the same thickness */
+            box-sizing: border-box;
+            line-height: 1;
+        }
+        #display a:hover,
+        #display button:hover {
+            background-color: #522D80;
+        }
+        .selected-cars {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add navbar to the top -->
+    <div id="navbar"></div>
+    <h1>Car Display Page</h1>
+    <!-- Div display for format purposes -->
+    <div id="display">
+        <!-- Display list of cars selected -->
+        <div id="selectedCars" class="selected-cars"></div>
+        <!-- Button to clear selection -->
+        <button onclick="clearSelections()">Clear All Selections</button>
+        <!-- Button to go back to car selection -->
+        <a class="selection-a" href="sessions.html">Back to Car Selection</a>
+    </div>
+
+    <script>
+        // Function to grab cars from from session storage
+        function displaySelectedCars() {
+            // Grab the json car list from session storage or blank list if there is nothing
+            const selectedCars = JSON.parse(sessionStorage.getItem('selectedCars') || '[]');
+            // Set displayDiv to the selectedCars dom element
+            const displayDiv = document.getElementById('selectedCars');
+            // If the list is not set, display no cars
+            if (selectedCars.length === 0) {
+                displayDiv.innerHTML = '<p>No cars selected</p>';
+            } else {
+                // If there are cars in the list, create a bulleted list of cars
+                const list = document.createElement('ul');
+                selectedCars.forEach(car => {
+                    const li = document.createElement('li');
+                    li.textContent = car;
+                    list.appendChild(li);
+                });
+                displayDiv.appendChild(list);
+            }
+        }
+        // Function to clear the session
+        function clearSelections() {
+            sessionStorage.removeItem('selectedCars');
+            displaySelectedCars();
+        }
+
+        // Display cars when page loads
+        displaySelectedCars();
+
+        // Navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

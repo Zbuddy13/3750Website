@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Connection Status</title>
+    <link rel="stylesheet" href="../style.css">
+    <script> 
+        // Code to ask for db request
+        function checkStatus() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("status").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "database.php")
+            xmlhttp.send();
+        }
+        // Added navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+  </head>
+    <body onload="checkStatus()">
+      <div id="navbar"></div>
+      <h1>Database Status:</h1>
+      <!-- Div element to display status results -->
+      <div id="status" >[Status will display here.]</div>
+    </body>
+</html>

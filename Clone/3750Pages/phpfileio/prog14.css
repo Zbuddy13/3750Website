@@ -1,0 +1,72 @@
+/* Container for php number checker */
+.php-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+/* Formatting for form group */
+.form-group {
+    margin-bottom: 15px;
+}
+/* Format for labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+/* Format for text area */
+textarea {
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+/* Button group formatting */
+.button-group {
+    margin: 20px 0;
+}
+/* Button formatting */
+.button-group button {
+    padding: 8px 20px;
+    font-size: 15px;
+    margin: 6px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #F56600;
+    color: white;
+}
+/* Hover for button group */
+.button-group button:hover {
+    background-color: #db5b00;
+}
+/* Reset button format */
+#reset {
+    background-color: #522D80;
+}
+/* Reset button hover */
+#reset:hover {
+    background-color: #45266b;
+}
+/* Format result div */
+#result {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+/* Format the number list */
+.number-list {
+    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Format the number results */
+.number {
+    background-color: #F56600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: white;
+}

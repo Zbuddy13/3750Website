@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Sessions: Car Selection Page</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        select {
+            width: 25%;
+            height: 150px;
+            margin: 20px 0;
+            margin-left: 10px;
+            display: block;
+        }
+        #selection-page button, 
+        #selection-page a {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 10px;
+            /* Get rid of underline */
+            text-decoration: none;
+            color: white;
+            background-color: #F56600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            /* Ensure they are the same thickness */
+            box-sizing: border-box;
+            line-height: 1;
+        }
+        #selection-page button:hover, 
+        #selection-page a:hover {
+            background-color: #d85a00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add navbar to the top -->
+    <div id="navbar"></div>
+    <!-- Establish selection page div -->
+    <div id="selection-page">
+        <h1>Car Selection Page</h1>
+        <!-- Create list of cars for the user to select from -->
+        <select id="carList" multiple>
+            <option value="Ford Mustang">Ford Mustang</option>
+            <option value="Ford F-150">Ford F-150</option>
+            <option value="Ford Maverick">Ford Maverick</option>
+            <option value="Ford Excursion">Ford Excursion</option>
+            <option value="Ford GT">Ford GT</option>
+            <option value="Ford Explorer">Ford Explorer</option>
+            <option value="Ford Ranger">Ford Ranger</option>
+        </select>
+        <!-- Button to call submit cars function -->
+        <button onclick="submitCars()">Submit Selection</button>
+        <!-- Transfer to display page -->
+        <a href="sessionsdisplay.html">View Selected Cars</a>
+    </div>
+
+    <script>
+        // Define function so submit cars to the car list
+        function submitCars() {
+            // Grab the dom element for the car list
+            const carList = document.getElementById('carList');
+            // Map the selected cars from carList to the selectedCars variable
+            const selectedCars = Array.from(carList.selectedOptions).map(option => option.value);
+            // Store these values in json in session storage called selectedCars
+            sessionStorage.setItem('selectedCars', JSON.stringify(selectedCars));
+            // Send user to the display page
+            window.location.href = 'sessionsdisplay.html';
+        }
+        // Navbar code
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

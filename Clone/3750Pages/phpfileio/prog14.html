@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP File I/O</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="prog14.css">
+</head>
+<body>
+    <!-- Add nav bar -->
+    <div id="navbar"></div>
+
+    <!-- Establish the container to hold the number checker -->
+    <div class="php-container">
+        <h1>PHP Number Checker</h1>
+        <!-- Create the number form to hold the text area -->
+        <form id="numberForm">
+            <div class="form-group">
+                <!-- Create the label and text area to input numbers for processing -->
+                <label for="numbers">Enter numbers (separated by commas):</label>
+                <textarea id="numbers" name="numbers" rows="2" placeholder="Example: 1,2,3,4"></textarea>
+            </div>
+            <!-- Create button group to hold each button -->
+            <div class="button-group">
+                <!-- Button to send numbers to php program -->
+                <button type="submit" id="check">CHECK THESE NUMBERS</button>
+                <!-- Call php armstrong route -->
+                <button type="button" id="armstrong">ARMSTRONG</button>
+                <!-- Call the fibonacci route -->
+                <button type="button" id="fibonacci">FIBONACCI</button>
+                <!-- Call the prime route -->
+                <button type="button" id="prime">PRIME</button>
+                <!-- Call the none route -->
+                <button type="button" id="none">NONE</button>
+                <!-- Call the reset route -->
+                <button type="button" id="reset">RESET</button>
+            </div>
+        </form>
+        <!-- Div to display the results from php -->
+        <div id="result"></div>
+    </div>
+
+    <!-- Add the js to send request to php -->
+    <script src="prog14.js"></script>
+
+    <!-- Add nav bar code -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>

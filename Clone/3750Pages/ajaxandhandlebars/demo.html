@@ -1,0 +1,57 @@
+<!-- Unchanged from source unless noted -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX and Handlebars</title>
+    <!-- Add the css -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="demo.css">
+    <!-- Add the handlebars source -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+<body>
+    <!-- Add the nav bar -->
+    <div id="navbar"></div>
+
+    <header>
+        <h1>JSON, AJAX, and Handlebars</h1>
+        <button class="a-button" id="btn">Fetch Info for 3 New Animals</button>
+    </header>
+
+    <div id="animal-info"></div>
+
+    <!-- Handlebars implementation -->
+    <script id="animalTemplate" type="text/x-handlebars-template">
+        <!-- Iterate over the json array -->
+        {{#each this}}
+        <p>
+            <!-- Use the json elements to replicate the list provided -->
+            {{name}} is a {{species}} that likes to eat
+            {{#each foods.likes}}
+                {{#if @first}}{{this}}{{else}} and {{this}}{{/if}}
+            {{/each}}
+            and dislikes
+            {{#each foods.dislikes}}
+                {{#if @first}}{{this}}{{else}} and {{this}}{{/if}}
+            {{/each}}.
+        </p>
+        {{/each}}
+    </script>
+
+    <!-- Add the demo js code provided -->
+    <script src="demo.js"></script>
+
+    <!-- Add the navbar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
