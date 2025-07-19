@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #wordList {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px; /* Added margin */
+        }
+        #wordList ul {
+            list-style: none;
+            padding: 0;
+        }
+        #wordList li {
+            padding: 5px 0;
+            cursor: grab; /* Indicate draggable */
+        }
+        #dropArea {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #555;
+            flex-wrap: wrap; /* Allow dropped items to wrap */
+            gap: 10px; /* Space between dropped items */
+        }
+        #dropArea.highlight {
+            background-color: #e2f0ff;
+        }
+        .dropped-word {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #droppedWordCount {
+            margin-top: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Words by Vowel Count</h1>
+    <div class="buttons" id="vowelButtons"></div>
+    <div id="wordList">
+        <ul id="words"></ul>
+    </div>
+
+    <h2>Drop Area</h2>
+    <div id="dropArea">
+        Drag and drop words here
+    </div>
+    <div id="droppedWordCount">
+        Number of words dropped: 0
+    </div>
+
+    <script>
+        let droppedCount = 0; // Initialize counter for dropped words
+
+        // Fetch vowel counts from PHP
+        fetch('examtwo.php?action=get_vowel_counts')
+            .then(response => response.json())
+            .then(data => {
+                const buttonContainer = document.getElementById('vowelButtons');
+                // Create buttons for each unique vowel count
+                data.vowelCounts.forEach(count => {
+                    const button = document.createElement('button');
+                    button.textContent = count;
+                    button.onclick = () => fetchWords(count);
+                    buttonContainer.appendChild(button);
+                });
+            });
+
+        // Fetch words for a specific vowel count
+        function fetchWords(vowelCount) {
+            fetch(`examtwo.php?action=get_words&vowel_count=${vowelCount}`)
+                .then(response => response.json())
+                .then(data => {
+                    const wordList = document.getElementById('words');
+                    wordList.innerHTML = '';
+                    data.words.forEach(word => {
+                        const li = document.createElement('li');
+                        li.textContent = word;
+                        li.setAttribute('draggable', true); // Make list items draggable
+                        li.addEventListener('dragstart', dragStart);
+                        wordList.appendChild(li);
+                    });
+                });
+        }
+
+        // Drag and Drop functionality
+        const dropArea = document.getElementById('dropArea');
+        const droppedWordCount = document.getElementById('droppedWordCount');
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.textContent); // Set the data to be transferred (the word)
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Prevent default to allow drop
+            dropArea.classList.add('highlight'); // Add highlight
+            e.dataTransfer.dropEffect = 'move';
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('highlight'); // Remove highlight
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('highlight'); // Remove highlight
+
+            const data = e.dataTransfer.getData('text/plain');
+            
+            // If the drop area still contains the initial "Drag and drop words here" text, remove it
+            if (dropArea.textContent.includes('Drag and drop words here')) {
+                dropArea.innerHTML = '';
+            }
+
+            const droppedWordSpan = document.createElement('span');
+            droppedWordSpan.classList.add('dropped-word');
+            droppedWordSpan.textContent = data;
+            dropArea.appendChild(droppedWordSpan);
+
+            droppedCount++;
+            droppedWordCount.textContent = `Number of words dropped: ${droppedCount}`;
+        });
+    </script>
+</body>
+</html>
