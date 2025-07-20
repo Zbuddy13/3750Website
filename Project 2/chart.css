@@ -65,7 +65,7 @@ canvas {
 }
 .news-item a {
     text-decoration: none;
-    color: #007bff;
+    color: #F56600;
     font-weight: bold;
 }
 .news-item a:hover {
@@ -86,7 +86,7 @@ canvas {
     margin-top: 20px;
 }
 .see-more-button {
-    background-color: #007bff;
+    background-color: #F56600;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -96,7 +96,7 @@ canvas {
     transition: background-color 0.2s;
 }
 .see-more-button:hover {
-    background-color: #0056b3;
+    background-color: #522D80;
 }
 .see-more-button:disabled {
     background-color: #cccccc;
