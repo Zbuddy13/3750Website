@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usability Testing</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="navbar"></div> <!-- added nav bar reference to js -->
+
+    <main class="main-content-area container">
+
+        <section id="about" class="content-section">
+            <div class="card">
+                <iframe class="card-iframe" src="UsabilityTesting.pdf" width="1400" height="1400"></iframe>
+            </div>
+            <div class="card">
+                <h2>1. Add tool tip to stock in search bar</h2>
+                <img src="images/viewchartsearchbefore.png">
+                <img src="images/viewchartsearchfix.png">
+            </div>
+            <div class="card">
+                <h2>2. Add "view chart" button in watchlist</h2>
+                <img src="images/viewchartwatchlistbefore.png">
+                <img src="images/viewchartwatchlistfix.png">
+            </div>
+            <div class="card">
+                <h2>3. Sort the news articles by date</h2>
+                <img src="images/newsbefore.png" style="width:600px;">
+                <img src="images/newsfix.png" style="width:600px;">
+            </div>
+            <div class="card">
+                <h2>4. Add a button to the chart page to get back to the watchlist</h2>
+                <img src="images/chartpagebefore.png" style="width:600px;">
+                <img src="images/chartpagefix.png" style="width:600px; margin:auto">
+            </div>
+        </section>
+    </main>
+
+    <footer class="my-footer">
+        <p><a href="mailto:jzshaw@clemson.edu">jzshaw@clemson.edu</a></p>
+        <p>James Shaw. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
