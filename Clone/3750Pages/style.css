@@ -213,13 +213,14 @@ li a:hover {
     background-color: #333333; 
     color: #f0f0f0;       
     text-align: center;
-    padding: 30px 20px;
     width: 100%;
     border-top: 2px solid #F56600; /* Clemson Orange top border */
+    bottom: 0;
+    position: fixed;
 }
 
 .my-footer p {
-    margin: 5px 0;
+    
     font-size: 0.9em;
 }
 

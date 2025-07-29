@@ -1,0 +1,104 @@
+.chart {
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.chart-container,
+.company-profile-container,
+.company-news-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+canvas {
+    width: 100% !important;
+    height: 400px !important;
+}
+.company-profile-container h2,
+.company-news-container h2 {
+    color: #333;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.company-profile-item {
+    margin-bottom: 10px;
+}
+.company-profile-item strong {
+    display: inline-block;
+    width: 120px;
+}
+.news-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.news-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.news-item h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #007bff;
+    font-size: 1.1em;
+}
+.news-item p {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+.news-item .news-source-date {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+}
+.news-item a {
+    text-decoration: none;
+    color: #F56600;
+    font-weight: bold;
+}
+.news-item a:hover {
+    text-decoration: underline;
+}
+.error {
+    color: #dc3545;
+    padding: 10px;
+    text-align: center;
+}
+.no-data-message {
+    color: #888;
+    padding: 10px;
+    text-align: center;
+}
+.see-more-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.see-more-button {
+    background-color: #F56600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+.see-more-button:hover {
+    background-color: #522D80;
+}
+.see-more-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

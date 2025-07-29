@@ -1,0 +1,122 @@
+/* Login body format */
+.login-system {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 30px;
+}
+/* Whole container format */
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 350px;
+}
+/* Login heading */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Margin between form elements */
+.form-group {
+    margin-bottom: 15px;
+    place-content: center;
+}
+/* Form label format */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+/* Input box format */
+.form-group input {
+    width: 332px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    /* width + paddingx2 + borderx2 = total width */
+    border-radius: 4px;
+}
+.form-group select {
+    width: 350px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+/* Submit button form-group */
+.form-group.submit-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.form-group input[type="submit"] {
+    background-color: #F56600;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.form-group input[type="submit"]:hover {
+    background-color: #522D80;
+}
+/* Error message formatting */
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+/* Success format */
+.success {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
+/* Links to go to other pages */
+.signup-link, .login-link, .forgot-password-link {
+    text-align: center;
+}
+.signup-link a, .login-link a, .forgot-password-link a{
+    text-decoration: none;
+    color:#522D80;
+}
+/* Admin page formatting */
+.admin {
+    margin: 0;
+    padding: 20px;
+}
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+.admin-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background-color: #F56600;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.no-data {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
